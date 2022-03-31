@@ -20,7 +20,7 @@ export default class ErrorBoundary extends React.Component {
 
   render() {
     if(this.state.hasError) {
-      return (<h3 actionText="Dismiss" onClick={this.dissmissComponent}>
+      return (<h3 onClick={this.dissmissComponent}>
         Error,
         Something went wrong!.
       </h3>)
