@@ -1,5 +1,5 @@
-import ServerlessHttp from "serverless-http";
-import expressApp from "./app";
+const ServerlessHttp = require("serverless-http");
+const expressApp = require("./app");
 
 const functionName = 'http';
 

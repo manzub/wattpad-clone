@@ -1,4 +1,4 @@
-export default function customLogger (tokens, req, res) {
+module.exports = function customLogger (tokens, req, res) {
 	const log = [
     tokens.method(req, res),
     tokens.url(req, res),

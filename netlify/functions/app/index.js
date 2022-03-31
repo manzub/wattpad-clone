@@ -1,10 +1,10 @@
-import compression from "compression";
-import express from "express";
-import morgan from "morgan";
-import cors from "cors";
-import customLogger from "./utils/customLogger";
+const compression = require("compression");
+const express = require("express");
+const morgan = require("morgan");
+const cors = require("cors");
+const customLogger = require("./utils/customLogger");
 
-export default function expressApp(functionName) {
+module.exports = function expressApp(functionName) {
   const app = express();
   const router = express.Router();
 
