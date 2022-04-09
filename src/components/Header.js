@@ -2,19 +2,20 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, LightningBoltIcon, MoonIcon, SearchIcon, SunIcon, ViewGridIcon } from "@heroicons/react/solid";
 import React from "react";
 import Avatar from "react-avatar";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 function Header() {
+  const navigate = useNavigate();
   const { theme, setTheme } = React.useContext(ThemeContext);
   const isDarkMode = theme === 'dark';
 
   return(<React.Fragment>
-    <div className="px-1 flex items-center justify-between h-[56px] border-gray-300" style={{borderBottomWidth:'1px'}}>
+    <div className="px-1 font-bold font-sans flex items-center justify-between h-[56px] border-gray-300 sticky top-0 z-50 bg-gray-50 dark:bg-gray-700" style={{borderBottomWidth:'1px'}}>
       <div className="flex items-center justify-evenly gap-2">
-        <img className="w-[126px]" src="/wp-logo-orange.png" alt="imf" />
+        <img onClick={() => navigate('/')} className="cursor-pointer w-[126px]" src="/wp-logo-orange.png" alt="imf" />
         {/* quick links */}
-        <NavLink to="/browse">Browse</NavLink>
+        <NavLink to="/stories">Browse</NavLink>
       </div>
       <div className="flex items-center justify-center">
         <div className="relative">
@@ -46,11 +47,11 @@ function Header() {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="p-3 absolute right-2 w-56 mt-2 origin-top-right divide-y dark:divide-gray-400 divide-gray-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800">
+            <Menu.Items className="p-3 absolute right-2 w-56 mt-2 origin-top-right divide-y dark:divide-gray-400 divide-gray-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 bg-gray-50">
               <div className="px-1 py-1 ">
                 <Menu.Item as="div" className="my-3">
                   {({ active }) => (
-                    <NavLink to="/sd"  className={(active ? 'bg-orange-100 ' : '')+"w-full p-1 flex items-center gap-2"}>
+                    <NavLink to="/myworks/new"  className={(active ? 'bg-orange-100 ' : '')+"w-full p-1 flex items-center gap-2"}>
                       <ViewGridIcon className="h-6" />
                       <span className="text-sm">Create New Story</span>
                     </NavLink>
@@ -58,7 +59,7 @@ function Header() {
                 </Menu.Item>
                 <Menu.Item as="div" className="my-3">
                   {({ active }) => (
-                    <NavLink to="/sd" className={(active ? 'bg-orange-100 ' : '')+"w-full p-1 flex"}>
+                    <NavLink to="/myworks" className={(active ? 'bg-orange-100 ' : '')+"w-full p-1 flex"}>
                       <span className="text-sm">My stories</span>
                     </NavLink>
                   )}
@@ -92,7 +93,7 @@ function Header() {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="p-3 absolute right-2 w-40 mt-2 origin-top-right divide-y dark:divide-gray-400 divide-gray-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800">
+            <Menu.Items className="p-3 absolute right-2 w-40 mt-2 origin-top-right divide-y dark:divide-gray-400 divide-gray-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 bg-gray-50">
               <div className="px-1 py-1 ">
                 <Menu.Item as="div" className="my-2">
                   {({ active }) => (

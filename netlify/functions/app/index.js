@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const customLogger = require("./utils/customLogger");
 
+
 module.exports = function expressApp(functionName) {
   const app = express();
   const router = express.Router();
@@ -18,6 +19,20 @@ module.exports = function expressApp(functionName) {
   router.get('/init', (req, res) => {
     res.send('welcome');
   })
+
+  // default page not found route
+  app.use("*", (req, res) => {
+    res.status(404).json({
+      status: 0,
+      message: "Page not found",
+      error: {
+        statusCode: 404,
+        message: "You reached a route that is not defined on this server",
+      },
+    });
+  });
+
+  // TODO: use connectMongo.then for anyroutes
 
   // Attach logger
   app.use(morgan(customLogger))

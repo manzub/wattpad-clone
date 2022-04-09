@@ -15,7 +15,7 @@ function App({ loaded }) {
     dispatch({ type: 'LOADED', payload:{ init: true } })
   } })
 
-  return (<div style={{fontFamily:'Montserrat'}} className='bg-white dark:text-white dark:bg-gray-700 transition-all min-h-screen'>
+  return (<div style={{fontFamily:'Montserrat'}} className='bg-gray-50 dark:text-white dark:bg-gray-700 transition-all min-h-screen'>
     {/* add loading and content widget */}
     { loaded ? <Router /> : <Loading/>}
   </div>);

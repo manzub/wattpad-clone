@@ -18,11 +18,11 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <ThemeProvider>
+        <QueryClientProvider client={queryClient}>
         <ErrorBoundary>
-          <QueryClientProvider client={queryClient}>
-            <App/>
-          </QueryClientProvider>
+          <App/>
         </ErrorBoundary>
+        </QueryClientProvider>
       </ThemeProvider>
     </BrowserRouter>
   </Provider>
